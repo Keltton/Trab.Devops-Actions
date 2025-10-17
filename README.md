@@ -1,2 +1,32 @@
 # Trab.Devops-Actions
 trabalho de Devops focado em git
+
+TRABALHO DE GIT
+de HOJE!
+
+PRA ENTREGAR ATÉ A PRÓXIMA AULA.
+
+NO E-MAIL DO PROFESSOR:
+
+-----------------------------------------
+CRIAR REPO
+1 arquivo HTML
+1 css
+1 js
+
+actions: 
+
+hello world
+mostre a data e hora push
+usuário do push
+calcular 2+2 variável no terminal
+listar arquivos
+conta arquivos html
+criar um arquivo de readme ou texto e preencher
+if agendamento rodar apenas durante a noite
+if agendamento rodar apenas aos sábados
+if com arquivos maiores que 100kb alertar
+
+action com vários steps - data, usuário, quantos arquivos html css e js foram enviados em sequencia
+mesmo de cima sem sequencia
+agendamento toda meia noite contar a quantidade de arquivos
