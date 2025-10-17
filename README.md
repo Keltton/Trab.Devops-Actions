@@ -1,9 +1,6 @@
 # Trab.Devops-Actions
 trabalho de Devops focado em git
 
-TRABALHO DE GIT
-de HOJE!
-
 PRA ENTREGAR ATÉ A PRÓXIMA AULA.
 
 NO E-MAIL DO PROFESSOR:
