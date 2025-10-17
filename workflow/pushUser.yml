@@ -1,0 +1,17 @@
+name: usuarioPush
+
+on:
+  push:
+    branches:
+      - main
+      
+permissions:
+  content: write
+
+jobs:
+  userPush:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+    uses: actions/r 
+    
