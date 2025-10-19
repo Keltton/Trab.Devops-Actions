@@ -1,0 +1,13 @@
+name: calcular2+2
+on: workflow_dispatch
+jobs: 
+  first-job:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: calculo 
+        env:
+          num1: 2
+          num2: 2
+        run: echo "soma de 2+2 é igual a: $((num1 + num2))"
+      
+     
