@@ -1,9 +1,6 @@
 name: dataHoraPush
 
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispatch
 
 jobs:
   dataHora:
@@ -11,7 +8,7 @@ jobs:
 
     steps:
     - name: textoInfo
-      run: echo "Push realizado na data: "
+      run: echo "Push realizado na data:"
     
     - name: horaTerminal
       run: TZ="America/Sao_Paulo" date '+%Y-%m-%d %H:%M'
