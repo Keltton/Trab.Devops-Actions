@@ -1,8 +1,19 @@
-name: rodarHello
-on: workflow_dispatch
-jobs: 
-  first-job:
+name: dataHoraPush
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  dataHora:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Print Hello World
-        run: echo "Hello World"
+
+    steps:
+    - name: textoInfo
+      run: echo "Push realizado na data: "
+    
+    - name: horaTerminal
+      run: TZ="America/Sao_Paulo" date '+%Y-%m-%d %H:%M'
+
+  
