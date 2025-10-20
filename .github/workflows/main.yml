@@ -1,0 +1,27 @@
+name: criarTXT
+
+on:
+  push:
+    branches:
+      - main
+      
+permissions:
+  contents: write
+
+jobs:
+  userPush:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: preencherTXT
+      run: echo "Push feito por ${{ github.actor }}" >> teste.txt
+
+    - name: adicionarTXTrepo
+      run: |
+        git config --global user.name "bot"
+        git config --global user.email "bot11324234@gmail.com"
+        git add teste.txt
+        git commit -m "adicionado arquivo de teste"
+        git push
