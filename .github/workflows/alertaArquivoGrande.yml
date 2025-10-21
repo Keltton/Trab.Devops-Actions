@@ -21,3 +21,4 @@ jobs:
          if [-n "$ArquivoGrande"]; then
            echo "teve arquivos maiores que 100kb"
            echo "$ArquivoGrande"
+           fi
