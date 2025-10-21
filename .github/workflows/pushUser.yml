@@ -1,0 +1,17 @@
+name: usuarioPush
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  userPush:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+    
+      - name: echoUsuarioPush
+        run: echo "Push feito por ${{ github.actor }}"
+    
