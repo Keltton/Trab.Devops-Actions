@@ -1,0 +1,71 @@
+name: rodarDia
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 03 * * 6'  
+
+permissions:
+  contents: write
+
+jobs:
+  falarDia:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+    
+      - name: rodouDia
+        run:  |
+          varDia=$(TZ="America/Sao_Paulo" date '+%Y-%m-%d')
+          echo "Rodado no dia $varDia" >> onSchedule.txt
+
+      - name: validacao
+        run: |
+           echo "Verificando arquivos maiores que 100kb" 
+        
+            ArquivoGrande=$(find ./ -type f -size +100k)
+      
+             if [ -n "$ArquivoGrande" ]; then
+               echo "teve arquivos maiores que 100kb" >> onSchedule.txt
+               echo "$ArquivoGrande" >> onSchedule.txt
+             else
+               echo "Tudo nos conformes!" >> onSchedule.txt
+               fi
+
+      - name: listarArquivos
+        run: |
+
+            echo "Contando os arquivos..."
+            
+            varHora=$(TZ="America/Sao_Paulo" date '+%H:%M')
+            varDia=$(TZ="America/Sao_Paulo" date '+%Y-%m-%d')
+                   
+            quantHtml=$(find ./ -type f -name "*.html" | wc -l)
+            echo "Temos $quantHtml arquivos HTML no projeto." >> onSchedule.txt
+
+            quantJs=$(find ./ -type f -name "*.js" | wc -l)
+            echo "Temos $quantJs arquivos JavaScript no projeto." >> onSchedule.txt
+
+            quantCSS=$(find ./ -type f -name "*.css" | wc -l)
+            echo "Temos $quantCSS arquivos CSS no projeto." >> onSchedule.txt
+
+            quanTotal=$(find ./ -type f | wc -l)
+            echo "No total temos $quanTotal arquivos no projeto." >> onSchedule.txt
+
+            echo "no dia de hoje ($varDia) às $varHora, este projeto tem :" >> onSchedule.txt
+            find ./ -type f  >> onSchedule.txt
+
+      - name: adicionarTXTrepo
+        run: |
+          git config --global user.name "bot"
+          git config --global user.email "bot11324234@gmail.com"
+          git add onSchedule.txt
+          git commit -m "adicionado arquivo de teste"
+          git push
+
+
+      
