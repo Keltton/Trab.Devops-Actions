@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: helloWorld
-       run:
-         var1 = $(2)
-         var2 = $(2)
+       run: |
+         var1 = 2
+         var2 = 2
          echo "Hello World!"
          echo "2 + 2 = $((var1 + var2))"
 
