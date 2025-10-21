@@ -27,7 +27,7 @@ jobs:
         run: |
            echo "Verificando arquivos maiores que 100kb" 
         
-            ArquivoGrande=$(find ./ -type f -size +100k)
+            ArquivoGrande=$(find ./ -type f -size +100k ! -path "./.*")
       
              if [ -n "$ArquivoGrande" ]; then
                echo "teve arquivos maiores que 100kb" >> onSchedule.txt
