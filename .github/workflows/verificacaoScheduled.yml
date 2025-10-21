@@ -1,4 +1,4 @@
-name: rodarDia
+name: onSchedulle
 
 on:
   push:
@@ -17,7 +17,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-    
+
+      - name: pullForGithub
+        run: |
+          git config --global user.name "bot"
+          git config --global user.email "bot11324234@gmail.com"
+          git pull origin main --no-edit
+         
       - name: rodouDia
         run:  |
           varDia=$(TZ="America/Sao_Paulo" date '+%Y-%m-%d')
@@ -66,12 +72,9 @@ jobs:
 
       - name: adicionarTXTrepo
         run: |
-          git config --global user.name "bot"
-          git config --global user.email "bot11324234@gmail.com"
-          git pull --rebase origin main
           git add onSchedule.txt
           git commit -m "adicionado arquivo de teste"
-          git push
+          git push origin main
 
 
       
