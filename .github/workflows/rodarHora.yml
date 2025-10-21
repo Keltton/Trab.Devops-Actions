@@ -1,0 +1,23 @@
+name: rodarHora
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 12 * * *'  
+
+jobs:
+  dia:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: varHora
+        run: varHora=$(TZ="America/Sao_Paulo" date '+%H:%M')
+
+
+    
+      - name: rodouHora
+        run:  echo "Rodado na hora:"
+              echo " $varHora"
+          
