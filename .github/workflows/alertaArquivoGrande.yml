@@ -1,0 +1,23 @@
+name: arquivoGrande
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs: 
+  IfArquivo:
+    runs-on: ubuntu-latest
+    steps: 
+     - name: Pegar-repositório
+       uses: actions/checkout@v4
+
+     - name: checarArquivos
+       run: |
+         ArquivoGrande=$(find . -type f -size +100k)
+      
+         if [-n "$ArquivoGrande"]; then
+           echo "teve arquivos maiores que 100kb"
+           echo "$ArquivoGrande"
