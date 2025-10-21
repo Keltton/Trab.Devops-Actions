@@ -1,0 +1,88 @@
+name: infoSobrePushJobSeparado
+
+on:
+  push:
+    branches:
+      - main
+      
+permissions:
+  contents: write
+
+jobs:
+  pullGithub:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+      
+    - name: pullForGithub
+      run: |
+          git config --global user.name "bot"
+          git config --global user.email "bot11324234@gmail.com"
+          git pull origin main --no-edit
+
+  helloWorldCalc:
+    runs-on: ubuntu-latest
+    steps:
+     - name: helloWorld
+       run:
+         var1 = $(2)
+         var2 = $(2)
+         echo "Hello World!"
+         echo "2 + 2 = $((var1 + var2))"
+
+  editTxt:
+    runs-on: ubuntu-latest
+    steps:       
+    - name: inicioTXT
+      run: |
+        echo "Fazendo as primeiras linhas do TXT..."
+      
+        varHora=$(TZ="America/Sao_Paulo" date '+%H:%M')
+        varDia=$(TZ="America/Sao_Paulo" date '+%Y-%m-%d')
+        
+        echo "Push feito por ${{ github.actor }} as $varHora do dia $varDia" >> infoPush.txt
+        
+    - name: alertaArquivos
+      run: |
+        echo "Verificando arquivos maiores que 100kb"
+        
+        ArquivoGrande=$(find ./ -type f -size +100k)
+      
+           if [ -n "$ArquivoGrande" ]; then
+             echo "teve arquivos maiores que 100kb" >> infoPush.txt
+             echo "$ArquivoGrande" >> infoPush.txt
+           else
+             echo "Tudo nos conformes!" >> infoPush.txt
+             fi
+
+    - name: listarArquivos
+      run: |
+            echo "Contando os arquivos..."
+        
+            quantHtml=$(find ./ -type f -name "*.html" | wc -l)
+            echo "Temos $quantHtml arquivos HTML no projeto." >> infoPush.txt
+
+            quantJs=$(find ./ -type f -name "*.js" | wc -l)
+            echo "Temos $quantJs arquivos JavaScript no projeto." >> infoPush.txt
+
+            quantCSS=$(find ./ -type f -name "*.css" | wc -l)
+            echo "Temos $quantCSS arquivos CSS no projeto." >> infoPush.txt
+
+            quanTotal=$(find ./ -type f | wc -l)
+            echo "No total temos $quanTotal arquivos no projeto." >> infoPush.txt
+            
+    - name: Style
+      run: |
+        echo "______________________________________________________________
+        ______________________________________________________________" >> infoPush.txt
+
+  pushGithub:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: adicionarTXTrepo
+      run: |
+        git add infoPush.txt
+        git commit -m "adicionado arquivo de teste"
+        git push origin main
