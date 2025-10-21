@@ -12,12 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: varHora
-        run: varHora=$(TZ="America/Sao_Paulo" date '+%H:%M')
-
-
     
       - name: rodouHora
-        run:  echo "Rodado na hora $varHora"
+        run: |
+          varHora=$(TZ="America/Sao_Paulo" date '+%H:%M')
+          echo "Rodado na hora $varHora"
               
           
