@@ -1,0 +1,4 @@
+Temos 1 arquivos HTML no projeto.
+Temos 1 arquivos JavaScript no projeto.
+Temos 1 arquivos CSS no projeto.
+No total temos 92 arquivos no projeto.
