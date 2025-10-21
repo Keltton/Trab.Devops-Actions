@@ -18,6 +18,6 @@ jobs:
 
     
       - name: rodouDia
-        run:  echo "Rodado no dia:"
-              echo " $vardia"
+        run:  echo "Rodado no dia $vardia"
+              
           
