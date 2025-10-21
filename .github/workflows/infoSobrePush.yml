@@ -58,6 +58,6 @@ jobs:
       run: |
         git config --global user.name "bot"
         git config --global user.email "bot11324234@gmail.com"
-        git add teste.txt
+        git add infoPush.txt
         git commit -m "adicionado arquivo de teste"
         git push
