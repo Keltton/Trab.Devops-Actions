@@ -16,7 +16,7 @@ jobs:
 
      - name: checarArquivos
        run: |
-         ArquivoGrande=$(find . -type f -size +100k)
+         ArquivoGrande=$(find ./ -type f -size +100k)
       
          if [-n "$ArquivoGrande"]; then
            echo "teve arquivos maiores que 100kb"
