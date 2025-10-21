@@ -9,18 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  pullGithub:
-    runs-on: ubuntu-latest
-    steps:
-    - name: checkout
-      uses: actions/checkout@v4
-      
-    - name: pullForGithub
-      run: |
-          git config --global user.name "bot"
-          git config --global user.email "bot11324234@gmail.com"
-          git pull origin main --no-edit
-
+   
   helloWorldCalc:
     runs-on: ubuntu-latest
     steps:
@@ -31,9 +20,18 @@ jobs:
          echo "Hello World!"
          echo "2 + 2 = $((var1 + var2))"
 
-  editTxt:
+  baseTxt:
     runs-on: ubuntu-latest
-    steps:       
+    steps:   
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: pullForGithub
+      run: |
+          git config --global user.name "bot"
+          git config --global user.email "bot11324234@gmail.com"
+          git pull origin main --no-edit
+          
     - name: inicioTXT
       run: |
         echo "Fazendo as primeiras linhas do TXT..."
@@ -41,8 +39,28 @@ jobs:
         varHora=$(TZ="America/Sao_Paulo" date '+%H:%M')
         varDia=$(TZ="America/Sao_Paulo" date '+%Y-%m-%d')
         
-        echo "Push feito por ${{ github.actor }} as $varHora do dia $varDia" >> infoPush.txt
+        echo "Push feito por ${{ github.actor }} as $varHora do dia $varDia" >> initPush.txt
         
+    
+
+    - name: adicionarTXTrepo
+      run: |
+        git add initPush.txt
+        git commit -m "adicionado arquivo de info sobre push"
+        git push origin main
+
+  alertTxt:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: pullForGithub
+      run: |
+          git config --global user.name "bot"
+          git config --global user.email "bot11324234@gmail.com"
+          git pull origin main --no-edit
+    
     - name: alertaArquivos
       run: |
         echo "Verificando arquivos maiores que 100kb"
@@ -50,39 +68,49 @@ jobs:
         ArquivoGrande=$(find ./ -type f -size +100k)
       
            if [ -n "$ArquivoGrande" ]; then
-             echo "teve arquivos maiores que 100kb" >> infoPush.txt
-             echo "$ArquivoGrande" >> infoPush.txt
+             echo "teve arquivos maiores que 100kb" >> alertPush.txt
+             echo "$ArquivoGrande" >> alertPush.txt
            else
-             echo "Tudo nos conformes!" >> infoPush.txt
+             echo "Tudo nos conformes!" >> alertPush.txt
              fi
+             
+    - name: adicionarTXTrepo
+      run: |
+        git add alertPush.txt
+        git commit -m "adicionado arquivo de validação tamanhos"
+        git push origin main
 
+
+  listTxt:
+    runs-on: ubuntu-latest
+    steps:   
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: pullForGithub
+      run: |
+          git config --global user.name "bot"
+          git config --global user.email "bot11324234@gmail.com"
+          git pull origin main --no-edit
+        
     - name: listarArquivos
       run: |
             echo "Contando os arquivos..."
         
             quantHtml=$(find ./ -type f -name "*.html" | wc -l)
-            echo "Temos $quantHtml arquivos HTML no projeto." >> infoPush.txt
+            echo "Temos $quantHtml arquivos HTML no projeto." >> listPush.txt
 
             quantJs=$(find ./ -type f -name "*.js" | wc -l)
-            echo "Temos $quantJs arquivos JavaScript no projeto." >> infoPush.txt
+            echo "Temos $quantJs arquivos JavaScript no projeto." >> listPush.txt
 
             quantCSS=$(find ./ -type f -name "*.css" | wc -l)
-            echo "Temos $quantCSS arquivos CSS no projeto." >> infoPush.txt
+            echo "Temos $quantCSS arquivos CSS no projeto." >> listPush.txt
 
             quanTotal=$(find ./ -type f | wc -l)
-            echo "No total temos $quanTotal arquivos no projeto." >> infoPush.txt
+            echo "No total temos $quanTotal arquivos no projeto." >> listPush.txt 
             
-    - name: Style
-      run: |
-        echo "______________________________________________________________
-        ______________________________________________________________" >> infoPush.txt
-
-  pushGithub:
-    runs-on: ubuntu-latest
-    steps:
-    
     - name: adicionarTXTrepo
       run: |
-        git add infoPush.txt
-        git commit -m "adicionado arquivo de teste"
+        git add listPush.txt
+        git commit -m "adicionado arquivo de lista"
         git push origin main
