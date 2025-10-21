@@ -48,3 +48,30 @@ no dia de hoje (2025-10-21) às 13:49, este projeto tem :
 ./README.md
 ./teste.txt
 ./infoPush.txt
+Rodado no dia 2025-10-21
+teve arquivos maiores que 100kb
+./teste.txt
+Temos 1 arquivos HTML no projeto.
+Temos 1 arquivos JavaScript no projeto.
+Temos 1 arquivos CSS no projeto.
+No total temos 17 arquivos no projeto.
+no dia de hoje (2025-10-21) às 13:51, este projeto tem :
+./workflow/dataHora.yml
+./workflow/criarTXT.yml
+./workflow/listarArquivos.yml
+./workflow/helloWorld.yml
+./workflow/rodarNoite.yml
+./workflow/calculo.yml
+./workflow/alertaArquivoGrande.yml
+./workflow/pushUser.yml
+./workflow/listarHTML.yml
+./workflow/rodarDia.yml
+./onSchedule.txt
+./index.html
+./script.js
+./style.css
+./README.md
+./teste.txt
+./infoPush.txt
+______________________________________________________________
+______________________________________________________________
