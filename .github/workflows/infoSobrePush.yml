@@ -14,7 +14,14 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v4
+      
+    - name: pullForGithub
+      run: |
+          git config --global user.name "bot"
+          git config --global user.email "bot11324234@gmail.com"
+          git pull origin main --no-edit
 
+        
     - name: inicioTXT
       run: |
         echo "Fazendo as primeiras linhas do TXT..."
@@ -56,16 +63,13 @@ jobs:
     - name: Style
       run: |
         echo "______________________________________________________________
-        ______________________________________________________________"
+        ______________________________________________________________" >> infoPush.txt
 
 
 
 
     - name: adicionarTXTrepo
       run: |
-        git config --global user.name "bot"
-        git config --global user.email "bot11324234@gmail.com"
-        git pull --rebase origin main
         git add infoPush.txt
         git commit -m "adicionado arquivo de teste"
-        git push
+        git push origin main
