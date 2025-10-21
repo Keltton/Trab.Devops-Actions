@@ -59,10 +59,16 @@ jobs:
             echo "no dia de hoje ($varDia) às $varHora, este projeto tem :" >> onSchedule.txt
             find ./ -type f ! -path "./.*" >> onSchedule.txt
 
+      - name: Style
+        run: |
+          echo "______________________________________________________________
+          ______________________________________________________________"
+
       - name: adicionarTXTrepo
         run: |
           git config --global user.name "bot"
           git config --global user.email "bot11324234@gmail.com"
+          git pull --rebase origin main
           git add onSchedule.txt
           git commit -m "adicionado arquivo de teste"
           git push
