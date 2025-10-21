@@ -18,6 +18,6 @@ jobs:
 
     
       - name: rodouHora
-        run:  echo "Rodado na hora:"
-              echo " $varHora"
+        run:  echo "Rodado na hora $varHora"
+              
           
