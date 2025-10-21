@@ -12,12 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: varDia
-        run: varDia=$(TZ="America/Sao_Paulo" date '+%Y-%m-%d')
-
-
     
       - name: rodouDia
-        run:  echo "Rodado no dia $varDia"
+        run:  |
+          varDia=$(TZ="America/Sao_Paulo" date '+%Y-%m-%d')
+          echo "Rodado no dia $varDia"
               
           
