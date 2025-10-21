@@ -53,11 +53,19 @@ jobs:
             quanTotal=$(find ./ -type f | wc -l)
             echo "No total temos $quanTotal arquivos no projeto." >> infoPush.txt
             
+    - name: Style
+      run: |
+        echo "______________________________________________________________
+        ______________________________________________________________"
+
+
+
 
     - name: adicionarTXTrepo
       run: |
         git config --global user.name "bot"
         git config --global user.email "bot11324234@gmail.com"
+        git pull --rebase origin main
         git add infoPush.txt
         git commit -m "adicionado arquivo de teste"
         git push
