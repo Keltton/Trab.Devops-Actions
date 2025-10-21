@@ -53,11 +53,11 @@ jobs:
             quantCSS=$(find ./ -type f -name "*.css" | wc -l)
             echo "Temos $quantCSS arquivos CSS no projeto." >> onSchedule.txt
 
-            quanTotal=$(find ./ -type f | wc -l)
+            quanTotal=$(find ./ -type f ! -path "./.*" | wc -l)
             echo "No total temos $quanTotal arquivos no projeto." >> onSchedule.txt
 
             echo "no dia de hoje ($varDia) às $varHora, este projeto tem :" >> onSchedule.txt
-            find ./ -type f  >> onSchedule.txt
+            find ./ -type f ! -path "./.*" >> onSchedule.txt
 
       - name: adicionarTXTrepo
         run: |
